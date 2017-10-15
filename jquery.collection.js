@@ -783,15 +783,6 @@
                 return true;
             }
 
-            // if preserve_names option is set, we should enforce many options to avoid
-            // having inconsistencies between the UI and the Symfony result
-            if (settings.preserve_names) {
-                settings.allow_up = false;
-                settings.allow_down = false;
-                settings.drag_drop = false;
-                settings.add_at_the_end = true;
-            }
-
             // drag & drop support: this is a bit more complex than pressing "up" or
             // "down" buttons because we can move elements more than one place ahead
             // or below...
