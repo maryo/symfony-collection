@@ -498,11 +498,6 @@
 
                 if (settings.preserve_names) {
                     freeKey = collection.data('collection-free-key');
-
-                    if (freeKey === undefined) {
-                        freeKey = findFreeNumericKey(settings, elements);
-                    }
-
                     collection.data('collection-free-key', freeKey + 1);
                 }
 
@@ -915,8 +910,11 @@
                 });
             } // if (settings.position_field_selector) {
 
-            settings.after_init(collection);
+            if (settings.preserve_names) {
+                collection.data('collection-free-key', findFreeNumericKey(settings, collection.find(settings.elements_selector)));
+            }
 
+            settings.after_init(collection);
         }); // elem.each
 
         return true;
